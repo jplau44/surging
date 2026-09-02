@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Surging App",
+  label: "Surging App",
   description: "Track real-time stock prices, get personalized alerts and explore detailed company insights.",
 };
 
