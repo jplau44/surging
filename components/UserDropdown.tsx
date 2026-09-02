@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 import NavItems from '@/components/NavItems';
 
-function UserDropdown() {
+const UserDropdown = () => {
     const router = useRouter();
 
     const handleSignOut = async () => {
@@ -83,6 +83,6 @@ function UserDropdown() {
             </DropdownMenuContent>
         </DropdownMenu>
     );
-}
+};
 
 export default UserDropdown;
