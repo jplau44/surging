@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
     DropdownMenu,
@@ -8,28 +8,28 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import {useRouter} from "next/navigation";
-import {Button} from "@/components/ui/button";
-import {LogOut} from "lucide-react";
-import NavItems from "@/components/NavItems";
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { LogOut } from 'lucide-react';
+import NavItems from '@/components/NavItems';
 
 function UserDropdown() {
     const router = useRouter();
 
     const handleSignOut = async () => {
-        router.push("/sign-in");
+        router.push('/sign-in');
     };
 
     const user = {
-        name: "John",
-        email: "contact@gmail.com",
+        name: 'John',
+        email: 'contact@gmail.com',
     };
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger asChild={true} >
+            <DropdownMenuTrigger asChild={true}>
                 <Button variant="ghost" className="flex items-center gap-3 text-gray-400 hover:text-yellow-500">
                     <Avatar className="h-8 w-8">
                         <AvatarImage src="https://github.com/shadcn.png" />
@@ -38,13 +38,14 @@ function UserDropdown() {
                         </AvatarFallback>
                     </Avatar>
                     <div className="hidden md:flex flex-col items-start">
-                        <span className="text-base font-medium text-gray-400">
-                            {user.name}
-                        </span>
+                        <span className="text-base font-medium text-gray-400">{user.name}</span>
                     </div>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-max min-w-(--radix-dropdown-menu-trigger-width) max-w-[calc(100vw-2rem)]" align="end">
+            <DropdownMenuContent
+                className="w-max min-w-(--radix-dropdown-menu-trigger-width) max-w-[calc(100vw-2rem)]"
+                align="end"
+            >
                 <DropdownMenuGroup>
                     <DropdownMenuLabel>
                         <div className="flex relative items-center gap-3 py-3 pr-2">
@@ -55,9 +56,7 @@ function UserDropdown() {
                                 </AvatarFallback>
                             </Avatar>
                             <div className="flex min-w-0 flex-col">
-                                <span className="text-base font-medium text-gray-400">
-                                    {user.name}
-                                </span>
+                                <span className="text-base font-medium text-gray-400">{user.name}</span>
                                 <span className="whitespace-nowrap text-sm font-medium text-gray-500">
                                     {user.email}
                                 </span>
@@ -65,22 +64,25 @@ function UserDropdown() {
                         </div>
                     </DropdownMenuLabel>
                 </DropdownMenuGroup>
-                <DropdownMenuSeparator className="sm:hidden bg-gray-600"/>
+                <DropdownMenuSeparator className="sm:hidden bg-gray-600" />
                 <DropdownMenuGroup>
                     <nav className="sm:hidden">
-                        <NavItems variant="dropdown"/>
+                        <NavItems variant="dropdown" />
                     </nav>
                 </DropdownMenuGroup>
-                <DropdownMenuSeparator className="bg-gray-600"/>
+                <DropdownMenuSeparator className="bg-gray-600" />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem onClick={handleSignOut} className="text-gray-100 text-sm font-medium cursor-pointer focus:bg-transparent focus:text-yellow-500 transition-colors">
+                    <DropdownMenuItem
+                        onClick={handleSignOut}
+                        className="text-gray-100 text-sm font-medium cursor-pointer focus:bg-transparent focus:text-yellow-500 transition-colors"
+                    >
                         <LogOut className="h-4 w-4 mr-2" />
                         Log Out
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>
         </DropdownMenu>
-    )
+    );
 }
 
-export default UserDropdown
+export default UserDropdown;

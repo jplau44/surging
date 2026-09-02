@@ -1,51 +1,47 @@
-'use client'
+'use client';
 
-import {NAV_ITEMS} from "@/lib/constants";
-import Link from "next/link";
-import {usePathname} from "next/navigation";
-import {DropdownMenuItem} from "@/components/ui/dropdown-menu";
+import { NAV_ITEMS, NavItem } from '@/lib/constants';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
 type NavItemsProps = {
-    variant?: "navbar" | "dropdown"
-}
+    variant?: 'navbar' | 'dropdown';
+};
 
-function NavItems({ variant = "navbar" } : NavItemsProps) {
-    const pathname = usePathname()
+function NavItems({ variant = 'navbar' }: NavItemsProps) {
+    const pathname = usePathname();
 
     const isActive = (path: string) => {
         if (path === '/') {
-            return pathname === '/'
+            return pathname === '/';
         }
 
         return pathname.startsWith(path);
     };
 
-    if (variant === "dropdown") {
-        return NAV_ITEMS.map(({ label, href}) => (
+    if (variant === 'dropdown') {
+        return NAV_ITEMS.map(({ label, href }: NavItem) => (
             <DropdownMenuItem key={href} asChild>
-                <Link
-                    href={href}
-                    className="cursor-pointer text-gray-300 focus:text-yellow-500"
-                >
-                    {label}
-                </Link>
+                <Link href={href}>{label}</Link>
             </DropdownMenuItem>
-        ))
+        ));
     }
 
     return (
         <ul className="flex flex-col sm:flex-row p-2 gap-3 sm:gap-10 font-medium">
-            {NAV_ITEMS.map(({href, label}) => (
+            {NAV_ITEMS.map(({ href, label }: NavItem) => (
                 <li key={href}>
-                    <Link href={href} className={`hover:text-yellow-500 transition-colors ${
-                        isActive(href) ? 'text-gray-100' : ''
-                    }`}>
+                    <Link
+                        href={href}
+                        className={`hover:text-yellow-500 transition-colors ${isActive(href) ? 'text-gray-100' : ''}`}
+                    >
                         {label}
                     </Link>
                 </li>
             ))}
         </ul>
-    )
+    );
 }
 
-export default NavItems
+export default NavItems;
