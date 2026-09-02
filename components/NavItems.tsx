@@ -9,7 +9,7 @@ type NavItemsProps = {
     variant?: 'navbar' | 'dropdown';
 };
 
-function NavItems({ variant = 'navbar' }: NavItemsProps) {
+const NavItems = ({ variant = 'navbar' }: NavItemsProps) => {
     const pathname = usePathname();
 
     const isActive = (path: string) => {
@@ -42,6 +42,6 @@ function NavItems({ variant = 'navbar' }: NavItemsProps) {
             ))}
         </ul>
     );
-}
+};
 
 export default NavItems;
